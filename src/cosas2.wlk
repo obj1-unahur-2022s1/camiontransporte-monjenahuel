@@ -38,7 +38,7 @@ object paqueteLadrillos{
 	method peso() = cantLadrillos * 2
 	
 	method bultos(){
-		if(cantLadrillos <= 100){
+		if(cantLadrillos >= 1 and cantLadrillos <= 100){
 			return 1
 		}else{
 			if(cantLadrillos <= 300){
