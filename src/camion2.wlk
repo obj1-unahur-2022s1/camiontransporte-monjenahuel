@@ -1,9 +1,15 @@
-import cosas.*
+import cosas2.*
+
+//Bultos
+
 
 object camion {
 	var cosas  = []
 	
-	method cargar(cosa) = cosas.add(cosa)
+	method cargar(cosa){
+		cosas.add(cosa)
+		cosa.consecuenciaDeCarga()
+		}
 	method descargar(cosa) = cosas.remove(cosa)
 	method hayAlgunoQuePesa(peso) = cosas.any(  {c => c.peso() == peso }  )
 	method elDelNivel(nivel) = cosas.find( {c => c.nivelDePeligrosidad() == nivel })

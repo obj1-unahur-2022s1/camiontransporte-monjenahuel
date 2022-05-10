@@ -1,6 +1,10 @@
+//Bultos
+
 object knightRider {
 	method peso() = 500
 	method nivelDePeligrosidad() = 10
+	method bultos()= 1
+	method consecuenciaDeCarga(){}
 }
 
 object bumblebee {
@@ -17,8 +21,12 @@ object bumblebee {
 	method nivelDePeligrosidad(){
 		if (formaActual == "auto"){
 			return 15
-		}else{return 30}
+		}else{
+			return 30
+		}
 	}
+	method bultos() = 2
+	method consecuenciaDeCarga(){formaActual = "robot"}
 
 }
 
@@ -26,19 +34,35 @@ object paqueteLadrillos{
 	var property cantLadrillos
 	
 	method nivelDePeligrosidad() = 2
+	
 	method peso() = cantLadrillos * 2
+	
+	method bultos(){
+		if(cantLadrillos <= 100){
+			return 1
+		}else{
+			if(cantLadrillos <= 300){
+				return 2
+			}else{
+				return 3
+				}
+			}
+		}
+	method consecuenciaDeCarga(){cantLadrillos += 12}
+		
 }
 
-
 object arena {
-	var property peso
+	var property peso = 0
 	
 	method nivelDePeligrosidad() = 1
+	method bultos() = 1
+	method consecuenciaDeCarga(){peso += 20}
 	
 }
 
 object bateriaAntiarea {
-	var property contieneMisiles
+	var property contieneMisiles = true
 	
 	method peso(){
 		if (self.contieneMisiles()){
@@ -51,6 +75,13 @@ object bateriaAntiarea {
 			return 100
 		}else{return 0}
 	}
+	method bultos(){
+		if (self.contieneMisiles()){
+			return 2
+		}else{return 1}
+	}
+	method consecuenciaDeCarga(){contieneMisiles = true}
+	
 }
 
 object contenedor {
@@ -67,13 +98,20 @@ object contenedor {
 	}	
 	method cargar(cosa) = contenido.add(cosa)
 	method descargar(cosa) = contenido.remove(cosa)
+	method bultos(){
+		return 1 + contenido.sum({c => c.bultos()})
+	}
+	method consecuenciaDeCarga(){contenido.forEach({c => c.consecuenciaDeCarga()})}
 }
 
 object residuosRadioactivos {
-	var property peso
+	var property peso = 0
 	
 	method nivelDePeligrosidad() = 200
-	}
+	method bultos() = 1
+	method consecuenciaDeCarga(){peso += 15}
+	
+}
 
 
 
@@ -83,6 +121,8 @@ object embalajeSeguridad {
 	method envolver(cosa){cosaEnvuelta = cosa} 
 	method peso()= cosaEnvuelta.peso()
 	method nivelDePeligrosidad() = cosaEnvuelta.nivelDePeligrosidad()/2
+	method bultos() = 2
+	method consecuenciaDeCarga(){}
 	
 }
 

@@ -1,2 +1,37 @@
 import camion.*
 import cosas.*
+
+ describe "Cosas"{
+ 	
+ 	test "Paquete de ladrilos"{
+ 		paqueteLadrillos.cantLadrillos(4)
+ 		assert.equals(8, paqueteLadrillos.peso())
+ 		assert.equals(2, paqueteLadrillos.nivelDePeligrosidad())
+ 	}
+ 	
+ 	
+ 	test "Batería antiaérea"{
+ 		bateriaAntiarea.contieneMisiles(true)
+ 		assert.equals(100,bateriaAntiarea.nivelDePeligrosidad())
+ 		assert.equals(300,bateriaAntiarea.peso())
+ 		assert.that(bateriaAntiarea.contieneMisiles())
+ 	}
+ 	
+ 	
+ 	test "Contenedor portuario"{
+ 		bumblebee.cambiarDeForma()
+ 		assert.equals("robot",bumblebee.formaActual())
+ 		contenedor.cargar(knightRider)
+ 		contenedor.cargar(bumblebee)
+ 		assert.equals(1400, contenedor.peso())
+ 		assert.equals(30, contenedor.nivelDePeligrosidad())
+ 	}
+ 	
+ 	test "Embalaje de seguridad"{
+ 		residuosRadioactivos.peso(30)
+ 		embalajeSeguridad.envolver(residuosRadioactivos)
+ 		assert.equals(30, embalajeSeguridad.peso())
+ 		assert.equals(100, embalajeSeguridad.nivelDePeligrosidad())
+ 	}
+ }
+
