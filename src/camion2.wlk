@@ -1,3 +1,6 @@
+/* 
+ * Camion2: Bien! Solo te dejé unas sugerencias para simplificar código.
+ */
 import cosas2.*
 
 //Bultos
@@ -11,6 +14,7 @@ object camion {
 		cosa.consecuenciaDeCarga()
 		}
 	method descargar(cosa) = cosas.remove(cosa)
+	method todoPesoPar() = cosas.all( { c => c.peso().even() } ) // Te faltó este
 	method hayAlgunoQuePesa(peso) = cosas.any(  {c => c.peso() == peso }  )
 	method elDelNivel(nivel) = cosas.find( {c => c.nivelDePeligrosidad() == nivel })
 	method pesoTotal() = cosas.sum( {c => c.peso() }) + 1000
@@ -21,9 +25,10 @@ object camion {
 		not(self.excedidoDePeso()) and 
 		self.objetosQueSuperanPeligrosidad(nivelMaximoPeligrosidad).isEmpty()
 	
-	method tieneAlgoQuePesaEntre(min, max){
-		return cosas.any({	c => min <= c.peso() and c.peso() <= max })
-	}
+	method tieneAlgoQuePesaEntre(min, max) = 
+		/* Bien, te dejo otra forma de expresarlo */
+		cosas.any({	c => c.peso().between(min,max) })
+	
 	
 	method cosaMasPesada(){
 		return cosas.max({c => c.peso()})

@@ -1,9 +1,12 @@
+/*
+ * camionTest: Bien.
+ */
 import camion.*
 import cosas.*
 
  
  test "camion"{
- 	bumblebee.cambiarDeForma()
+ 	bumblebee.transformadoEnAuto(false)
  	arena.peso(150)
  	bateriaAntiarea.contieneMisiles(false)
  	paqueteLadrillos.cantLadrillos(400)

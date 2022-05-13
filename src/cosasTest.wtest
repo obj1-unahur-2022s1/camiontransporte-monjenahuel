@@ -1,3 +1,6 @@
+/*
+ * cosasTest: Bien pasan todos y están correctamente formulados.
+ */
 import camion.*
 import cosas.*
 

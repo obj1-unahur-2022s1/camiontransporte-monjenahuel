@@ -1,24 +1,25 @@
+/* Bien. Te cambié el objeto bumblebee para que quede igual a cosas2, el resto
+ * fijate las sugerencias en cosas2
+ */
+
 object knightRider {
 	method peso() = 500
 	method nivelDePeligrosidad() = 10
 }
 
 object bumblebee {
-	var formaActual = "auto"
-	
-	method cambiarDeForma(){
-		if (formaActual == "auto"){
-			formaActual = "robot"
-		}else{formaActual = "auto"}
-	}
-	method formaActual() = formaActual
+		/* Bien. Hubiese sido más simple usar una variable booleana
+		 * para representar si está transformado en auto, ya que 
+		 * puede tener 2 estados: auto o robot. No está mal tu solución
+		 * solo te dejo la variante usando la variable booleana, verás
+		 * que queda más simple. Otra cosa a tener en cuenta que por lo
+		 * general no conviene usar string para definir valores de un atributo, 
+		 * siempre será mejor opción usar objetos.
+		 */
+	var property transformadoEnAuto = true
 	method peso() = 800
-	
-	method nivelDePeligrosidad(){
-		if (formaActual == "auto"){
-			return 15
-		}else{return 30}
-	}
+	method nivelDePeligrosidad() = if (transformadoEnAuto) 15 else 30
+	method consecuenciaDeCarga(){transformadoEnAuto = false}
 
 }
 
