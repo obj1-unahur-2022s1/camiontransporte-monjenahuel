@@ -1,3 +1,6 @@
+/*
+ * cosasTest: Bien pasan todos y están correctamente formulados.
+ */
 import camion.*
 import cosas.*
 
@@ -19,8 +22,8 @@ import cosas.*
  	
  	
  	test "Contenedor portuario"{
- 		bumblebee.cambiarDeForma()
- 		assert.equals("robot",bumblebee.formaActual())
+ 		bumblebee.transformadoEnAuto(false)
+ 		assert.notThat(bumblebee.transformadoEnAuto())
  		contenedor.cargar(knightRider)
  		contenedor.cargar(bumblebee)
  		assert.equals(1400, contenedor.peso())
